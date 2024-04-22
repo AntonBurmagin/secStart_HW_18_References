@@ -26,6 +26,14 @@ int upstairWays (int steps, int jump) {
     }
 }
 
+void evenDigits (long long number, int &ans) {
+    ans += 1 - number % 2;
+    number /= 10;
+    if (number != 0) {
+        evenDigits (number , ans);
+    }
+}
+
 int main() {
     //18.5.1 swap vector and array
     /*
@@ -43,18 +51,24 @@ int main() {
         std::cout << b[i];
     */
     // 18.5.2 rabbit and ladder: how many ways to the top
-    while (true) {
-        int steps, jumpMax;
-        std::cout << "Input ladder steps and longest possible jump:" << std::endl;
-        std::cin >> steps >> jumpMax;
-        if (steps > 0 && jumpMax > 0) {
-            std::cout << "There are " << upstairWays(steps, jumpMax) << " ways to top!" << std::endl;
-        } else {
-            std::cout << "Incorrect input! Try again!" << std::endl;
-        }
-    }
+    // while (true) {
+    //     int steps, jumpMax;
+    //     std::cout << "Input ladder steps and longest possible jump:" << std::endl;
+    //     std::cin >> steps >> jumpMax;
+    //     if (steps > 0 && jumpMax > 0) {
+    //         std::cout << "There are " << upstairWays(steps, jumpMax) << " ways to top!" << std::endl;
+    //     } else {
+    //         std::cout << "Incorrect input! Try again!" << std::endl;
+    //     }
+    // }
 
-    // 18.5.3 
+    // 18.5.3
+    long long num = 922337203685477580;
+    int ans = 0;
+    num = (num > 0 ? num : -num);
+    evenDigits (num, ans);
+    std::cout << ans << std::endl;
+
 
     return 0;
 }
